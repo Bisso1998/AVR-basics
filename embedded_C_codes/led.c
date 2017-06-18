@@ -17,15 +17,15 @@
 
 int main(void)
 {
-    DDRC = 0x01;                       // setting DDR of PORT C
+    DDRC |= (1 << PC0);                       // setting DDR of PORT C
     while(1)
     {
         // LED on
-        PORTC = 0b00000001;            // PC0 = High = LED attached on PC0 is ON
+        PORTC |= (1 << PC0);            // PC0 = High = LED attached on PC0 is ON
         _delay_ms(500);                // wait 500 milliseconds
 
         //LED off
-        PORTC = 0b00000000;            // PC0 = Low = LED attached on PC0 is OFF
+        PORTC &= ~(1 << PC0);            // PC0 = Low = LED attached on PC0 is OFF
         _delay_ms(500);                // wait 500 milliseconds
     }
 }
